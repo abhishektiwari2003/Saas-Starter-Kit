@@ -2,7 +2,6 @@
 
 import { useState, useRef } from "react";
 import {
-  Upload,
   Image as ImageIcon,
   ChevronLeft,
   ChevronRight,
