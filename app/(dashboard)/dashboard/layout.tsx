@@ -15,6 +15,8 @@ import {
   ChevronRight,
   MessageCircle,
   User,
+  Megaphone,
+  UsersRound,
 } from "lucide-react";
 
 export default function DashboardLayout({
@@ -63,6 +65,34 @@ export default function DashboardLayout({
               >
                 <Home className="mr-2 h-4 w-4" />
                 Dashboard
+              </Button>
+            </Link>
+
+            <Link href="/dashboard/campaign" passHref>
+              <Button
+                variant={
+                  pathname === "/dashboard/campaign" ? "secondary" : "ghost"
+                }
+                className={`my-1 w-full justify-start ${
+                  pathname === "/dashboard/campaign" ? "bg-gray-100" : ""
+                }`}
+              >
+                <Megaphone className="mr-2 h-4 w-4" />
+                Campaign
+              </Button>
+            </Link>
+
+            <Link href="/dashboard/customers" passHref>
+              <Button
+                variant={
+                  pathname === "/dashboard/customers" ? "secondary" : "ghost"
+                }
+                className={`my-1 w-full justify-start ${
+                  pathname === "/dashboard/customers" ? "bg-gray-100" : ""
+                }`}
+              >
+                <UsersRound className="mr-2 h-4 w-4" />
+                Customers
               </Button>
             </Link>
 
