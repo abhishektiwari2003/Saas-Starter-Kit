@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { CircleIcon, Home, LogOut } from "lucide-react";
+import { Zap, Home, LogOut, SquareUserRound } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -28,39 +28,27 @@ function Header() {
   }
 
   return (
-    <header className="border-b border-gray-200">
-      <div className="w-full px-4 sm:px-6 lg:px-8 xl:max-w-none xl:px-16 mx-auto py-4 flex justify-between items-center">
-        <Link href="/" className="flex items-center">
-          <CircleIcon className="h-6 w-6 text-orange-500" />
-          <span className="ml-2 text-xl font-semibold text-gray-900">ACME</span>
-        </Link>
-        <div className="flex items-center space-x-4">
-          <Link
-            href="/pricing"
-            className="text-sm font-medium text-gray-700 hover:text-gray-900"
-          >
+    <nav className="border-b border-zinc-800 bg-zinc-950 text-zinc-100">
+      <div className="container mx-auto px-4 h-16 flex items-center justify-between">
+        <div className="flex items-center space-x-2">
+          <Link href="/" className="flex items-center space-x-2">
+          <Zap className="h-6 w-6 text-yellow-400" />
+            <span className="text-lg font-semibold">SaaSStarter</span>
+          </Link>
+        </div>
+        <div className="flex items-center space-x-6">
+          <Link href="/pricing" className="text-sm text-zinc-100 hover:text-zinc-100">
             Pricing
           </Link>
           {user ? (
             <DropdownMenu open={isMenuOpen} onOpenChange={setIsMenuOpen}>
               <DropdownMenuTrigger asChild>
-                <Avatar className="cursor-pointer size-9">
-                  <AvatarImage alt={user.name || ""} />
-                  <AvatarFallback>
-                    {user.email
-                      .split(" ")
-                      .map((n) => n[0])
-                      .join("")}
-                  </AvatarFallback>
-                </Avatar>
+                <SquareUserRound/>
               </DropdownMenuTrigger>
-              <DropdownMenuContent align="end" className="flex flex-col gap-1">
+              <DropdownMenuContent align="end" className="bg-zinc-900 text-zinc-100">
                 {pathname !== "/dashboard" && (
                   <DropdownMenuItem className="cursor-pointer">
-                    <Link
-                      href="/dashboard"
-                      className="flex w-full items-center"
-                    >
+                    <Link href="/dashboard" className="flex w-full items-center">
                       <Home className="mr-2 h-4 w-4" />
                       <span>Dashboard</span>
                     </Link>
@@ -77,24 +65,21 @@ function Header() {
               </DropdownMenuContent>
             </DropdownMenu>
           ) : (
-            <Button
-              asChild
-              className="bg-black hover:bg-gray-800 text-white text-sm px-4 py-2 rounded-full"
-            >
+            <Button className="bg-yellow-500 hover:bg-yellow-600 text-black px-4 py-2 rounded-full text-sm">
               <Link href="/sign-up">Sign Up</Link>
             </Button>
           )}
         </div>
       </div>
-    </header>
+    </nav>
   );
 }
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <section className="flex flex-col min-h-screen">
+    <div className="min-h-screen bg-zinc-950 text-zinc-100">
       <Header />
-      {children}
-    </section>
+      <main>{children}</main>
+    </div>
   );
 }
