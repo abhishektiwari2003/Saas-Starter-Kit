@@ -135,14 +135,14 @@ export default function CreateCampaignPage() {
   };
 
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="container mx-auto px-4">
       <h1 className="text-3xl font-bold mb-6">
         Create AI-Driven Product Campaign
       </h1>
 
       <div className="space-y-8">
         {/* Campaign Name Input */}
-        <div>
+        <div className="space-y-2">
           <Label htmlFor="campaign-name">Campaign Name</Label>
           <Input
             id="campaign-name"
